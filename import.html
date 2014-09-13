@@ -1,0 +1,116 @@
+<polymer-element name="terminal-text" extends="p" attributes="">
+
+<template>
+	<link rel="stylesheet" href="assets/css/terminal.css" type="text/css" media="screen">
+	<style>
+		/* element styles */
+		terminal-text {
+
+		}
+		.hide {
+			display: none;
+		}
+	</style>
+	<template repeat="{{line in lines}}">
+		<div rel="line" class="hide" on-transitionEnd="{{ onTransitionEnd }}">{{line}}</div>
+	</template>
+</template>
+<script>
+	Polymer('terminal-text', {
+		created: function() {
+			var self = this;
+			// this is executed when the tag is inserted
+			//var button = this;
+
+			// get the text
+			var string = this.innerHTML;
+			var length = 80; // make length a variable...
+			var chunks = [],
+				pos = 0,
+				len = string.length;
+
+			// split it into lines
+			while (pos < len) {
+				chunks.push(string.slice(pos, pos += length));
+			}
+
+			// re-render text using template
+			this.lines = chunks;
+
+			// start animating
+			this.cursor = 0;
+			// better way to trigger on next click?
+			setTimeout(function(){
+				self.animate();
+			}, 10);
+			/*
+			var options = {
+				el: this
+			};
+			// get options from attributes
+			if( this.attributes['option-targetEl'] ){
+				options.targetEl = this.attributes['option-targetEl'].value;
+			}
+			if( this.attributes['option-style'] ){
+				options.style = this.attributes['option-style'].value;
+			}
+			//console.log( options );
+
+			// initiate view on element
+			var view = new Backbone.UI.Fullscreen( options );
+*/
+		},
+
+		animate: function(){
+			var self = this;
+			var lines = this.shadowRoot.querySelectorAll('[rel="line"]');
+			// if reached the end stop...
+			if( this.cursor == lines.length ) return;
+			// start animating the next line on the cursor
+			var line = lines[ this.cursor ];
+			line.classList.remove("hide");
+			line.classList.add("type");
+			/*
+			// THIS isn't working for some reason...
+			line.addEventListener(transitionEvent, function() {
+				self.animate();
+			});
+			*/
+			setTimeout(function(){
+				self.animate();
+			}, 2000);
+			// increment the cursor
+			this.cursor++;
+
+		},
+
+		onTransitionEnd: function(){
+			//
+		}
+
+	});
+
+	// helpers
+	/* From Modernizr */
+function whichTransitionEvent(){
+	var t;
+	var el = document.createElement('fakeelement');
+	var transitions = {
+		'transition':'transitionend',
+		'OTransition':'oTransitionEnd',
+		'MozTransition':'transitionend',
+		'WebkitTransition':'webkitTransitionEnd'
+	}
+
+	for(t in transitions){
+		if( el.style[t] !== undefined ){
+			return transitions[t];
+		}
+	}
+}
+
+/* Listen for a transition! */
+var transitionEvent = whichTransitionEvent();
+
+</script>
+</polymer-element>

@@ -1,0 +1,40 @@
+@-webkit-keyframes terminal-typing {
+	from { width: 0; }
+	to { width: 100%; }
+}
+
+@-moz-keyframes terminal-typing {
+	from { width: 0; }
+	to { width: 100%; }
+}
+
+@-webkit-keyframes blink-caret {
+	from, to { border-color: transparent }
+	50% { border-color: black }
+}
+
+@-moz-keyframes blink-caret {
+	from, to { border-color: transparent }
+	50% { border-color: black }
+}
+
+.type {
+	/*display: inline-block;*/
+	display: block;
+	padding-right: 3px;
+	white-space:nowrap;
+	overflow:hidden;
+	border-right: 3px solid transparent;
+	-webkit-animation: terminal-typing 2s linear,
+						blink-caret 1s 2;
+	-moz-animation: terminal-typing 2s linear,
+						blink-caret 1s 2;
+	animation-fill-mode: both;
+}
+
+.wait {
+	display: inline-block;
+	border-right: 3px solid transparent;
+	-webkit-animation: blink-caret 1s infinite;
+	-moz-animation: blink-caret 1s infinite;
+}
