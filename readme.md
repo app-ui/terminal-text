@@ -5,7 +5,7 @@ Web Component using Polymer that animates text like an old school terminal
 
 ## Examples
 
-[Basic application](http://rawgit.com/app-ui/fullscreen/master/examples/basic.html).
+[Basic application](http://rawgit.com/app-ui/terminal-text/master/examples/basic.html).
 
 
 ## Install
