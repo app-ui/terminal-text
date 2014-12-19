@@ -1,6 +1,6 @@
 # APP UI: Terminal Text
 
-Web Component using Polymer that animates text like an old school terminal
+Web Component using using [VanillaJS](http://vanilla-js.com/) that animates text like an old school terminal
 
 
 ## Examples
@@ -18,17 +18,16 @@ bower install app.ui.terminaltext
 
 ## Usage
 
-1. Import the Web Components polyfill:
+1. Import Web Components' polyfill
 
 ```html
-<script src="//cdnjs.cloudflare.com/ajax/libs/polymer/0.3.4/platform.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/polymer/0.3.4/polymer.js"></script>
+<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
 ```
 
 2. Import Custom Element:
 
 ```html
-<link rel="import" href="bower_components/app.ui.terminaltext/import.html">
+<link rel="import" href="components/app.ui.terminaltext">
 ```
 
 3. Start using it!
@@ -41,6 +40,11 @@ For now only the ```div``` of the block level tags is supported.
 
 
 ## Options
+
+...
+
+
+## Events
 
 ...
 
