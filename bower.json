@@ -7,6 +7,7 @@
 	],
 	"license": "MIT",
 	"keywords": [
+		"app-ui",
 		"ui",
 		"terminal",
 		"polymer",
@@ -16,12 +17,14 @@
 		"type": "git",
 		"url": "git://github.com/app-ui/terminal-text.git"
 	},
+	"main": "index.html",
 	"ignore": [
+		"components",
 		"bower_components",
 		"node_modules"
 	],
 	"dependencies": {
-		"platform": "Polymer/platform#~0.3.4",
-		"polymer": "Polymer/polymer#~0.3.4"
+		"webcomponentsjs": "*",
+		"app" : "*"
 	}
 }
