@@ -7,16 +7,20 @@
 
 		// gather attributes
 		var length = this.getAttribute("line-length");
+		// create shadowRoot
+		var shadow = this.createShadowRoot();
 		// set options
 		var options = {
+			renderTarget: shadow,
 			silentRender: true, // this is required to avoid an infinite loop (triggering createdCallback on .show() )
 			url: "../assets/html/app.ui.terminaltext.html"// use template html instead...
 		};
-		if(length) options.length = length;
+		if(length) options.length = parseInt(length, 10);
+		options.string = this.innerHTML;
 		// ...
 		options.el = this;
 		// instantiate view
-		this.view = new APP.UI.TerminalText( options );
+		if( !this.view ) this.view = new APP.UI.TerminalText( options );
 
 	};
 

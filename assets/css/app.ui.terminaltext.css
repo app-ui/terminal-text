@@ -1,3 +1,5 @@
+/* animation */
+
 @-webkit-keyframes terminal-typing {
 	from { width: 0; }
 	to { width: 100%; }
@@ -18,7 +20,11 @@
 	50% { border-color: black }
 }
 
-.type {
+/* element styles */
+[is='terminal-text']::shadow {
+
+}
+[is='terminal-text']::shadow .type {
 	/*display: inline-block;*/
 	display: block;
 	padding-right: 3px;
@@ -32,9 +38,13 @@
 	animation-fill-mode: both;
 }
 
-.wait {
+[is='terminal-text']::shadow .wait {
 	display: inline-block;
 	border-right: 3px solid transparent;
 	-webkit-animation: blink-caret 1s infinite;
 	-moz-animation: blink-caret 1s infinite;
+}
+
+[is='terminal-text']::shadow .hide {
+	display: none;
 }
